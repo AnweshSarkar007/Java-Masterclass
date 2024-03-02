@@ -6,7 +6,7 @@
 java -version
 ```
 
-- Oerating system and Java 17 version I'm using:
+- Java 17 version I'm using:
 
 ```sh
 openjdk version "17.0.1" 2021-10-19 LTS
