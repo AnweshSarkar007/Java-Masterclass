@@ -160,3 +160,38 @@ jshell> int myMaxIntTest = _147_483_647;
 |  int myMaxIntTest = _147_483_647;
 |
 ```
+
+## `byte`, `short`, `long` and `width`
+
+| Primitive | Wrapper Class | Notes                                           | Ranges                                      | Width |
+| --------- | ------------- | ----------------------------------------------- | ------------------------------------------- | ----- |
+| `byte`    | `Byte`        | Has the smallest range                          | -128 to 127                                 | 8     |
+| `short`   | `Short`       |                                                 | -32768 to 32767                             | 16    |
+| `int`     | `Integer`     | Java's default data type to store whole numbers | -2147483648 to 2147483647                   | 32    |
+| `long`    | `Long`        | Has the largest range                           | -9223372036854775808 to 9223372036854775807 | 64    |
+
+- Width is the amount of bits a number takes up to store in the memory. Can be found using `.SIZE` in the wrapper classes
+- Java allows certain numeric literals to have a suffix appended to the value, to force it to use a different data type. Note: A smaller data type will always fit to a larger data type
+
+```sh
+jshell> long myLongVal = 100;
+myLongVal ==> 100 // this is int assigned to long
+
+jshell> long myLongVal = 100L; // here it is long (can be l or L)
+myLongVal ==> 100
+
+jshell> long myVeryLongVal = 2_147_483_647_123; // numeric literal exceeding the int's max valu should have the 'L' suffix
+|  Error:
+|  integer number too large
+|  long myVeryLongVal = 2_147_483_647_123;
+|
+
+jshell> long myVeryLongVal = 2_147_483_647_123L;
+myVeryLongVal ==> 2147483647123
+
+jshell> short bigShortValue = 32768;
+|  Error:
+|  incompatible types: possible lossy conversion from int to short
+|  short bigShortValue = 32768;
+|
+```
