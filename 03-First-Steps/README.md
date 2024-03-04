@@ -195,3 +195,35 @@ jshell> short bigShortValue = 32768;
 |  short bigShortValue = 32768;
 |
 ```
+
+## Casting in Java
+
+- Multi-line declaration can be done in JShell
+
+```sh
+jshell> short myMinShortValue = Short.MIN_VALUE; int myMinIntValue = Integer.MIN_VALUE;
+myMinShortValue ==> -32768
+myMinIntValue ==> -2147483648
+
+jshell> byte myMinByteValue = Byte.MIN_VALUE, mymMaxByteValue = Byte.MAX_VALUE;
+myMinByteValue ==> -128
+mymMaxByteValue ==> 127
+```
+
+- The Java compiler doesn't attempt to evaluate the value, in a variable, when it's used in a calculation, so it doesn't know if the value fits, and throws an error. If however, the calculations invole numeric literals, Java can already predict if it fits into the variable or not
+
+```sh
+jshell> byte myNewByteVal = (myMinByteValue / 2);
+|  Error:
+|  incompatible types: possible lossy conversion from int to byte
+|  byte myNewByteVal = (myMinByteValue / 2);
+|                       ^----------------^
+
+jshell> byte myNewByteVal = (byte) (myMinByteValue / 2); // casting
+myNewByteVal ==> -64
+
+jshell> int myTotal = (myMinIntValue / 2); // no casting needed as it's already int
+myTotal ==> -1073741824
+```
+
+- In the above error: The default whole number used by Java is `int` and while evaluating the expression, Java thinks that the result wont fit in to the `byte` data type. To let Java know about the data types, we use casting.
