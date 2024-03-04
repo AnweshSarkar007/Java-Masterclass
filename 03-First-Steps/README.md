@@ -92,12 +92,12 @@ myTotal ==> 53
 - Primitive data types are the basic data types in Java
 - Primitive Data types
 
-| Whole number | Real number | Single character | Boolean   |
-| ------------ | ----------- | ---------------- | --------- |
-| `byte`       | `float`     | `char`           | `boolean` |
-| `short`      | `double`    |                  |           |
-| `int`        |             |                  |           |
-| `long`       |             |                  |           |
+| Whole number | Real number  | Single character | Boolean   |
+| ------------ | ------------ | ---------------- | --------- |
+| `byte`       | `float`      | `char`           | `boolean` |
+| `short`      | **`double`** |                  |           |
+| **`int`**    |              |                  |           |
+| `long`       |              |                  |           |
 
 - Primitive data types are placeholders from memory space in Java
 - Integer:
@@ -137,13 +137,13 @@ $2 ==> -2147483648
 - However, Java doesn't allow us to explicitly set something out of the range and neither does it wraps around. That is, we cannot set something out of bounds using numeric literals
 
 ```sh
-jshell> int myMaxIntTest = 2147483648; // Note: max is 2147483647
+jshell> int myMaxIntTest = 2147483648; # Note: max is 2147483647
 |  Error:
 |  integer number too large
 |  int myMaxIntTest = 2147483648;
 |
 
-jshell> int myMaxIntTest = 2147483647 + 1; // Note: this is an expression
+jshell> int myMaxIntTest = 2147483647 + 1; # Note: this is an expression
 myMaxIntTest ==> -2147483648
 ```
 
@@ -175,12 +175,12 @@ jshell> int myMaxIntTest = _147_483_647;
 
 ```sh
 jshell> long myLongVal = 100;
-myLongVal ==> 100 // this is int assigned to long
+myLongVal ==> 100 # this is int assigned to long
 
-jshell> long myLongVal = 100L; // here it is long (can be l or L)
+jshell> long myLongVal = 100L; # here it is long (can be l or L)
 myLongVal ==> 100
 
-jshell> long myVeryLongVal = 2_147_483_647_123; // numeric literal exceeding the int's max valu should have the 'L' suffix
+jshell> long myVeryLongVal = 2_147_483_647_123; # numeric literal exceeding the int's max valu should have the 'L' suffix
 |  Error:
 |  integer number too large
 |  long myVeryLongVal = 2_147_483_647_123;
@@ -219,10 +219,10 @@ jshell> byte myNewByteVal = (myMinByteValue / 2);
 |  byte myNewByteVal = (myMinByteValue / 2);
 |                       ^----------------^
 
-jshell> byte myNewByteVal = (byte) (myMinByteValue / 2); // casting
+jshell> byte myNewByteVal = (byte) (myMinByteValue / 2); # casting
 myNewByteVal ==> -64
 
-jshell> int myTotal = (myMinIntValue / 2); // no casting needed as it's already int
+jshell> int myTotal = (myMinIntValue / 2); # no casting needed as it's already int
 myTotal ==> -1073741824
 ```
 
@@ -279,7 +279,7 @@ jshell> float myFloat = 2.25;
 jshell> float myFloat = 2.25f;
 myFloat ==> 2.25
 
-jshell> float myFloat = (float) 2.25; // not recommended
+jshell> float myFloat = (float) 2.25; # not recommended
 myFloat ==> 2.25
 ```
 
@@ -319,7 +319,7 @@ jshell> myDouble = 5d / 2d;
 myDouble ==> 2.5
 
 jshell> myFloat = 5f / 3f;
-myFloat ==> 1.6666666 // recurring, we cant represent such number exactly, but we can be precise depending on the data type
+myFloat ==> 1.6666666 # recurring, we cant represent such number exactly, but we can be precise depending on the data type
 
 jshell> myDouble = 5d / 3d;
 myDouble ==> 1.6666666666666667
@@ -327,7 +327,7 @@ myDouble ==> 1.6666666666666667
 jshell> myDouble = 5.0 / 3.00;
 myDouble ==> 1.6666666666666667
 
-jshell> myDouble = 5.00 / 3; // 3 is integer here
+jshell> myDouble = 5.00 / 3; # 3 is integer here
 myDouble ==> 1.6666666666666667
 
 jshell> myFloat = 5.00 / 3f;
@@ -405,3 +405,97 @@ myFalse ==> false
 ```
 
 - Developers often used the prefix `is` or `has` for `boolean variable names. It makes the code more readable.
+
+## String Data Type
+
+- Kind of a class in Java, but it is treated a bit differently
+- A string is a sequence of characters
+- It is technically limited by the heap space of the system
+
+```sh
+jshell> String myString = "This is a string";
+myString ==> "This is a string"
+
+jshell> System.out.print("My String is equal to " + myString);
+My String is equal to This is a string
+
+jshell> myString = myString + ", and this is more!"; # concating
+myString ==> "This is a string, and this is more!"
+
+jshell> System.out.print("My String is equal to " + myString);
+My String is equal to This is a string, and this is more!
+
+jshell> myString = "I wish I had \u20B910,00,000.00";
+myString ==> "I wish I had ₹10,00,000.00"
+
+# multi-line in jshell
+jshell> {
+   ...>     String numberString = "250.55";
+   ...>     numberString = numberString + "49.45";
+   ...>     System.out.print(numberString);
+   ...> }
+250.5549.45
+
+jshell> String lastString = "10"; int myInt = 50;
+lastString ==> "10"
+myInt ==> 50
+
+jshell> lastString = lastString + myInt;
+lastString ==> "1050" # integers got concated
+
+jshell> lastString = lastString + doubleNumber;
+lastString ==> "1050137.65"
+```
+
+- In Java `+` symbol is an operator which can mean addition, if used for numbers. But it means concatenation when used with Strings
+- `String` is immutable, i.e. we can't change a `String` after it is created. So when concatenations happen, they just don't ge appended to the end of the `String`. Java creates a new `String` internally. The old one will get discarded from the memory automatically
+- The `StringBuilder` class is mutable, but it does not have special features of the String class like assinging String Literal or using the `+` operator
+
+## Operators, Operands and Expressions
+
+- Operators are special symbols which perform operations over multiple operands
+- Expression is a formed by combining variables, literals, method return values and operators
+- `+` with `char` - Work on the representative numbers
+
+```sh
+jshell> char first = 'A', second = 'B';
+first ==> 'A'
+second ==> 'B'
+
+jshell> System.out.print(first + second);
+131
+
+jshell> System.out.print("" + first + second); # now it's a string
+AB
+```
+
+| Operator | Numeric        | `char`         | `boolean` | `String`      |
+| -------- | -------------- | -------------- | --------- | ------------- |
+| `+`      | Addition       | Addition       | ×         | Concatenation |
+| `-`      | Subtraction    | Subtraction    | ×         | ×             |
+| `*`      | Multiplication | Multiplication | ×         | ×             |
+| `/`      | Division       | Division       | ×         | ×             |
+| `%`      | Modulo         | Modulo         | ×         | ×             |
+
+## Abbreviating Operators
+
+| Shorthand           | Example     |
+| ------------------- | ----------- |
+| Post-fix            | `result++`  |
+| Compound Assignment | `result+=1` |
+
+```sh
+jshell> int result = 10;
+result ==> 10
+
+jshell> result = result - 5.5;
+|  Error:
+|  incompatible types: possible lossy conversion from double to int
+|  result = result - 5.5;
+|           ^----------^
+
+jshell> result -= 5.5; // inplicit cast
+$74 ==> 4
+```
+
+- `x -= y` = `x = (data type of x) (x-y)`
