@@ -227,3 +227,135 @@ myTotal ==> -1073741824
 ```
 
 - In the above error: The default whole number used by Java is `int` and while evaluating the expression, Java thinks that the result wont fit in to the `byte` data type. To let Java know about the data types, we use casting.
+
+## Primitive Types Challenge
+
+```sh
+jshell> byte aByte = 12;
+aByte ==> 12
+
+jshell> short aShort = 20_000;
+aShort ==> 20000
+
+jshell> int aInt = 600_000;
+aint ==> 600000
+
+jshell> long aLong = 50_000L + (10L * (aByte + aShort + aInt));
+aLong ==> 6250120
+```
+
+- Parenthesis makes code more readable and and also denotes which part of the expression to work out first
+
+## Float and Double Primitives
+
+- Floating point numbers have fractional parts denoted by decimal point
+- Floating point numbers are used for more precision in calculations
+- Two default floating-point number types in Java - `float` and `double`. `double` is the default for any decimal/real number
+- Precision refer to the format and the amount of space occupied by the relevant type. `double` is more precise then `float`
+
+| Data Type | Width | Min Value | Max Value              |
+| --------- | ----- | --------- | ---------------------- |
+| `float`   | 32    | 1.4E-45   | 3.4028235E38           |
+| `double`  | 64    | 4.9E-324  | 1.7976931348623157E308 |
+
+- Java's Scientific Notation - Scientific notations are often used when denoting floating point numbers in Java. It can be translated into more familar terms by replacing the `E` in the number by `× 10^`
+  - 1.4E-45 = 1.4 × 10<sup>-45</sup>
+  - 3.4028235E38 = 3.4028235 × 10<sup>38</sup>
+  - 4.9E-324 = 4.9 × 10<sup>-324</sup>
+  - 1.7976931348623157E308 = 1.7976931348623157 × 10<sup>308</sup>
+
+```sh
+jshell> int myInt = 5; float myFloat = 5f; double myDouble = 5;
+myInt ==> 5
+myFloat ==> 5.0
+myDouble ==> 5.0
+
+jshell> float myFloat = 2.25;
+|  Error:
+|  incompatible types: possible lossy conversion from double to float
+|  float myFloat = 2.25;
+|                  ^--^
+
+jshell> float myFloat = 2.25f;
+myFloat ==> 2.25
+
+jshell> float myFloat = (float) 2.25; // not recommended
+myFloat ==> 2.25
+```
+
+- Similar to `long`, floating point numbers have literal suffixes too.
+  - `D` or `d` for Double - Optional as double is default
+  - `F` or `f` for float
+
+## Floating Point Precision
+
+- For whole numbers, the output is never in scientific notation. But for floating point numbers, it could be in scientific notations in some cases
+
+| Literal value | Default Output |
+| ------------- | -------------- |
+| 5             | 5.0            |
+| 5.000000      | 5.0            |
+| 5f            | 5.0            |
+| 5d            | 5.0            |
+| 5e1           | 50.0           |
+| 5_000_000.0   | 5000000.0      |
+| 50_000_000.0  | 5.0E7          |
+
+```sh
+jshell> double formatDouble = 3_000_000.4_567_890;
+formatDouble ==> 3000000.456789
+```
+
+- Division arithmetic
+
+```sh
+jshell> myInt = 5 / 2;
+myInt ==> 2
+
+jshell> myFloat = 5f / 2f;
+myFloat ==> 2.5
+
+jshell> myDouble = 5d / 2d;
+myDouble ==> 2.5
+
+jshell> myFloat = 5f / 3f;
+myFloat ==> 1.6666666 // recurring, we cant represent such number exactly, but we can be precise depending on the data type
+
+jshell> myDouble = 5d / 3d;
+myDouble ==> 1.6666666666666667
+
+jshell> myDouble = 5.0 / 3.00;
+myDouble ==> 1.6666666666666667
+
+jshell> myDouble = 5.00 / 3; // 3 is integer here
+myDouble ==> 1.6666666666666667
+
+jshell> myFloat = 5.00 / 3f;
+|  Error:
+|  incompatible types: possible lossy conversion from double to float
+|  myFloat = 5.00 / 3f;
+|            ^-------^
+```
+
+- Why `double` is default?
+
+  - It's actually faster in many modern computers
+  - At chip level, the funtionality to deal with `double` is fater than `float`
+  - Java libraries mostly work on double
+  - Double is more precise and has a larger range
+
+- Pounds to Kilograms
+
+```sh
+jshell> double pounds = 123.45;
+pounds ==> 123.45
+
+jshell> double kilograms = 0.45359237 * pounds;
+kilograms ==> 55.9959780765
+
+jshell> System.out.print(pounds + " pounds is equal to: " + kilograms + " kilograms!");
+123.45 pounds is equal to: 55.9959780765 kilograms!
+```
+
+- `float` and `double` are great for general floating point operations. But for precise calculations, neither should be used. This is due to the limitations with how floating point numbers are stored.
+  - Java has a class called `BigDecimal` that overcomes this!
