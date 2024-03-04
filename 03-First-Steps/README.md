@@ -359,3 +359,49 @@ jshell> System.out.print(pounds + " pounds is equal to: " + kilograms + " kilogr
 
 - `float` and `double` are great for general floating point operations. But for precise calculations, neither should be used. This is due to the limitations with how floating point numbers are stored.
   - Java has a class called `BigDecimal` that overcomes this!
+
+## `char`
+
+```sh
+jshell> char myChar = 'D';
+myChar ==> 'D'
+
+jshell> char myChar = 'DD';
+|  Error:
+|  unclosed character literal
+|  char myChar = 'DD';
+|                ^
+```
+
+- The `char` occupies 2 Bytes of memory, thus it's width is 16
+
+  - `char` is internally stored as a 2 Byte number, similar to `short`
+  - This number gets mapped to a single character by Java
+  - So, when a `char` is printed, we see the mapped character and not the representative number
+  - We can use character literals to assign to a `char` instead of looking up their representative number
+
+- Unicode is an international encodinf standard for use with different languages and scripts by which each letter, digit or symbol is assigned a unique numeric value that applies across different platforms and programs. `\u` escape sequence is used.
+
+```sh
+jshell> char myChar = '\u0044';
+myChar ==> 'D'
+
+jshell> char myChar = 68;
+myChar ==> 'D'
+```
+
+- `char` can be assigend using either of character literal, unicode notation and number
+
+## `boolean`
+
+- Two values - `true` or `false`
+
+```sh
+jshell> boolean myTrue = true;
+myTrue ==> true
+
+jshell> boolean myFalse = false;
+myFalse ==> false
+```
+
+- Developers often used the prefix `is` or `has` for `boolean variable names. It makes the code more readable.
