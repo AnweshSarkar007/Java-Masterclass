@@ -27,11 +27,11 @@ jshell> System.out.print('My Value' + myValue);
 
 ## Variables
 
-- A keybword is any one of the reserved words, that have a pre-defined meaning in the Java syntax
+- A keyword is any one of the reserved words, that have a pre-defined meaning in the Java syntax
 - All code is case sensitive
 - Java 17 keywords [Java Language Specification](https://docs.oracle.com/javase/specs/jls/se17/html/jls-3.html#jls-3.9)
-- Variables are namespace memory location, whise value can change during program execution.
-- Data types - the different tyoes of variables we can define. They are keywords.
+- Variables are namespace memory location, whose value can change during program execution.
+- Data types - the different types of variables we can define. They are keywords.
 - Java's Object Oriented features lets us create our own custom data types too, besides primitive ones (which are built in to the Java language)
 
 ```sh
@@ -57,7 +57,7 @@ jshell> System.out.print(myFirstNumber);
 10
 ```
 
-- Re-declaring the same varibale is not allowed. It throws error. However, JShell does allowy ti!
+- Re-declaring the same varibale is not allowed. It throws error. However, JShell does allowy it !
 - Mathematical operations can be doine in JShell too:
 
 ```sh
