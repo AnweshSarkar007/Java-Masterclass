@@ -147,7 +147,7 @@ jshell> int myMaxIntTest = 2147483647 + 1; # Note: this is an expression
 myMaxIntTest ==> -2147483648
 ```
 
-- Commas cannot be placed in between text literals, but to imporve readability, Java uses `_`. Note: `_` cannot be used in the start and end of the numeric literals
+- Commas cannot be placed in between text literals, but to improve readability, Java uses `_`. Note: `_` cannot be used in the start and end of the numeric literals
 
 ```sh
 jshell> int myMaxIntTest = 2_147_483_647;
