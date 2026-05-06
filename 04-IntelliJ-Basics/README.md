@@ -57,9 +57,16 @@ public class Hello {
 
 - Similar to other languages, if statements without a code block `{...}` will only treat the next line as under the if statement
 
-## Logical AND (`&&`), Logical OR (`||`), Assignment (`=`), Equals (`==`) and Conditional Operator (`?:`)
+## Other Operators
 
 > [!IMPORTANT]
+>
+> - Logical AND (`&&`)
+> - Logical OR (`||`)
+> - Assignment (`=`)
+> - Equals (`==`)
+> - Conditional Operator (`? :`)
+>
 > You know about these!
 
 - [Summary of Operators](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html)

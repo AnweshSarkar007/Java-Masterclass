@@ -1,3 +1,3 @@
-# Java 17 Masterclass
+# Java Masterclass
 
-Learning Java from _Tim Buchalka_ through the Udemy course [Java 17 Masterclass: Start Coding in 2024](https://www.udemy.com/course/java-the-complete-java-developer-course)
+Learning Java from _Tim Buchalka_ through the Udemy course [Java Masterclass 2025: 130+ Hours of Expert Lessons](https://www.udemy.com/course/java-the-complete-java-developer-course)

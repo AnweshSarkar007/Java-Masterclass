@@ -245,10 +245,10 @@ public class ReadingUserInput {
 
 | Technique                | Description                                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `System.in`              | Like System.out, Java provides System.in which can read input from the console or terminal. It’s not easy to use for beginners, and lots of code has been built around it, to make it easier.              |
+| `System.in`              | Like `System.out`, Java provides `System.in` which can read input from the console or terminal. It’s not easy to use for beginners, and lots of code has been built around it, to make it easier.          |
 | `System.console`         | This is Java’s solution for easier support for reading a single line and prompting user for information. Although this is easy to use, it doesn’t work with I.D.E.’s because these environments disable it |
 | `Command Line Arguments` | This is calling the Java program and specifying data in the call. This is very commonly used but doesn’t let us create an interactive application in a loop in Java.                                       |
-| `Scanner`                | The Scanner class was built to be a common way to read input, either using System.in or a file. For beginners, it’s much easier to understand than the bare bones System.in                                |
+| `Scanner`                | The Scanner class was built to be a common way to read input, either using `System.in` or a file. For beginners, it’s much easier to understand than the bare bones `System.in`                            |
 
 - Using `System.Console()`
 
